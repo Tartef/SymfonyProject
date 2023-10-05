@@ -10,16 +10,7 @@
 
 <div class="example-wrapper">
     <button id="show-form-button" class="btn btn-primary">Créer un post</button>
-    {#<div id="post-form" style="display: none;">
-        {{ form_start(PostFormType) }}
-        {{ form_widget(PostFormType) }}
-        <button type="submit" class="btn btn-success">Créer</button>
-        {{ form_end(PostFormType) }}
-    </div>#}
     <script>
-        document.getElementById('show-form-button').addEventListener('click', function() {
-            document.getElementById('post-form').style.display = 'block';
-        });
     </script>
 
 </div>

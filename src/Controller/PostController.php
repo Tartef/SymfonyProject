@@ -25,9 +25,8 @@ class PostController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Traite la soumission du formulaire, enregistre le post en base de données, etc.
 
-            return $this->redirectToRoute('home'); // Redirige vers la page d'accueil après la création du post.
+            return $this->redirectToRoute('app_post');
         }
 
         return $this->render('post/create.html.twig', [
