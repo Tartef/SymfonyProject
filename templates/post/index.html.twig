@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PostController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <button id="show-form-button" class="btn btn-primary">Créer un post</button>
+    {#<div id="post-form" style="display: none;">
+        {{ form_start(PostFormType) }}
+        {{ form_widget(PostFormType) }}
+        <button type="submit" class="btn btn-success">Créer</button>
+        {{ form_end(PostFormType) }}
+    </div>#}
+    <script>
+        document.getElementById('show-form-button').addEventListener('click', function() {
+            document.getElementById('post-form').style.display = 'block';
+        });
+    </script>
+
+</div>
+{% endblock %}
