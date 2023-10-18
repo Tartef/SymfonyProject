@@ -8,17 +8,16 @@
 {% block body %}
     <h1>Créer un post</h1>
 
-    {{ form_start(form) }}
+    {{ form_start(form, {'attr': {'class': 'form login_form'}}) }}
     <div class="form-group">
-        {{ form_label(form.title, 'Titre') }}
+        {{ form_label(form.title, 'Titre', {'label_attr': {'class': 'registration-label'}}) }}
         {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
     </div>
     <div class="form-group">
-        {{ form_label(form.content, 'Contenu') }}
+        {{ form_label(form.content, 'Contenu', {'label_attr': {'class': 'registration-label'}}) }}
         {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
     </div>
-    <button type="submit" class="btn btn-success">Créer</button>
+    <button type="submit" class="btn registration-button">Créer</button>
     {{ form_end(form) }}
     <a href="{{ path('app_posts') }}" class="btn btn-secondary">Retour à la liste des posts</a>
-
 {% endblock %}

@@ -1,20 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    </style>
+{% endblock %}
+
+{% block title %}S'enregistrer{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    <div class="container">
+        <h1>S'enregistrer</h1>
 
-    {{ form_errors(registrationForm) }}
+        <div class="form login_form">
+            {{ form_errors(registrationForm) }}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.username) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+            {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.username, {'label_attr': {'class': 'registration-label'}}) }}
+            {{ form_row(registrationForm.email, {'label_attr': {'class': 'registration-label'}}) }}
+            {{ form_row(registrationForm.plainPassword, {
+                'label': 'Mot de passe',
+                'label_attr': {'class': 'registration-label'}
+            }) }}
+            {{ form_row(registrationForm.confirmPassword, {
+                'label': 'Confirmer mot de passe',
+                'label_attr': {'class': 'registration-label'}
+            }) }}
+            {{ form_row(registrationForm.agreeTerms) }}
+            <button type="submit" class="registration-button">S'enregistrer</button>
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
 {% endblock %}

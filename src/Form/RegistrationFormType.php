@@ -11,6 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Expression;
 
 class RegistrationFormType extends AbstractType
 {
@@ -42,9 +43,30 @@ class RegistrationFormType extends AbstractType
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
+                    new Expression([
+                        'expression' => 'this === value',
+                        'message' => 'The password does not match the confirmation.',
+                    ]),
                 ],
             ])
-        ;
+            ->add('confirmPassword', PasswordType::class, [
+                'mapped' => false,
+                'label' => 'Confimer votre mot de passe',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Please confirm your password',
+                    ]),
+                    new Length([
+                        'min' => 6,
+                        'minMessage' => 'Your password confirmation should be at least {{ limit }} characters',
+                        'max' => 4096,
+                    ]),
+                    new Expression([
+                        'expression' => 'this === value',
+                        'message' => 'The password does not match the confirmation.',
+                    ]),
+                ],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
