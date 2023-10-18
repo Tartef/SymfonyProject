@@ -1,0 +1,12 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+{% endblock %}
+
+<header>
+    <div class="header-block">
+        <a href="{{ path('app_home') }}">Accueil</a>
+    </div>
+    <div class="header-block list-posts-link">
+        <a href="{{ path('app_posts') }}">Liste des Posts</a>
+    </div>
+</header>

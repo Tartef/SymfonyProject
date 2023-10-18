@@ -1,12 +1,24 @@
 {# templates/post/create.html.twig #}
 
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+{% endblock %}
 
 {% block body %}
     <h1>Créer un post</h1>
 
     {{ form_start(form) }}
-    {{ form_widget(form) }}
+    <div class="form-group">
+        {{ form_label(form.title, 'Titre') }}
+        {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.content, 'Contenu') }}
+        {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+    </div>
     <button type="submit" class="btn btn-success">Créer</button>
     {{ form_end(form) }}
+    <a href="{{ path('app_posts') }}" class="btn btn-secondary">Retour à la liste des posts</a>
+
 {% endblock %}

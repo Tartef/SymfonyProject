@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    </style>
+{% endblock %}
+
+{% block title %}Détail du Post{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Détail du Post</h1>
+        <div class="post-card">
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.content }}</p>
+        </div>
+        <a href="{{ path('app_posts') }}" class="btn btn-primary">Retour à la liste des posts</a>
+    </div>
+{% endblock %}
