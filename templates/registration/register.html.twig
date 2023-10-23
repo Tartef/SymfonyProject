@@ -15,8 +15,8 @@
             {{ form_errors(registrationForm) }}
 
             {{ form_start(registrationForm) }}
-            {{ form_row(registrationForm.username, {'label_attr': {'class': 'registration-label'}}) }}
-            {{ form_row(registrationForm.email, {'label_attr': {'class': 'registration-label'}}) }}
+            {{ form_row(registrationForm.username, {'label_attr': {'class': 'form-control'}}) }}
+            {{ form_row(registrationForm.email, {'label_attr': {'class': 'form-control'}}) }}
             {{ form_row(registrationForm.plainPassword, {
                 'label': 'Mot de passe',
                 'label_attr': {'class': 'registration-label'}
