@@ -1,5 +1,4 @@
 <?php
-// src/Validator/PasswordMatches.php
 
 namespace App\Validator;
 

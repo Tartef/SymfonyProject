@@ -37,8 +37,6 @@ class PostController extends AbstractController
         return $this->render('post/index.html.twig', [
             'posts' => $pagination,
         ]);
-
-
     }
 
     #[Route('/post/create', name: 'app_create_post')]
