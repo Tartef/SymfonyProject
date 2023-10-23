@@ -19,5 +19,10 @@
                 <div style="margin-bottom: 10px;"></div> {# Ajoutez une marge en bas de chaque carte de post #}
             {% endfor %}
         </div>
+
+        {# Pagination #}
+        <div class="pagination">
+            {{ knp_pagination_render(posts) }}
+        </div>
     </div>
 {% endblock %}

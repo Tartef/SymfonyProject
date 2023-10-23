@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Post;
 use App\Form\PostFormType;
+use Knp\Component\Pager\PaginatorInterface;
 
 class PostController extends AbstractController
 {
@@ -20,14 +21,24 @@ class PostController extends AbstractController
     }
 
     #[Route('/posts', name: 'app_posts')]
-    public function index(): Response
+    public function index(Request $request, PaginatorInterface $paginator): Response
     {
         $postRepository = $this->entityManager->getRepository(Post::class);
-        $posts = $postRepository->findAll();
+        $query = $postRepository->createQueryBuilder('p')
+            ->orderBy('p.id', 'DESC')
+            ->getQuery();
+
+        $pagination = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1), // Récupère le numéro de la page de la requête
+            3 // Nombre d'éléments par page
+        );
 
         return $this->render('post/index.html.twig', [
-            'posts' => $posts,
+            'posts' => $pagination,
         ]);
+
+
     }
 
     #[Route('/post/create', name: 'app_create_post')]
