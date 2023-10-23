@@ -2,9 +2,7 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 {% endblock %}
-
 {% block title %}Liste des Posts{% endblock %}
-
 {% block body %}
     <div class="container">
         <h1>Liste des Posts</h1>
@@ -12,12 +10,13 @@
 
         <div class="post-container">
             {% for post in posts %}
-                <a href="{{ path('app_show_post', {'id': post.id}) }}">
-                    <div class="post-card">
-                        <h3>{{ post.title }}</h3>
-                        <p>{{ post.content }}</p>
-                    </div>
-                </a>
+                <div class="post-card">
+                    <h3>{{ post.title }}</h3>
+                    <p>{{ post.content }}</p>
+                    <a href="{{ path('app_show_post', {'id': post.id}) }}" class="btn btn-primary">Voir</a>
+                    <a href="{{ path('app_edit_post', {'id': post.id}) }}" class="btn btn-warning">Modifier</a>
+                </div>
+                <div style="margin-bottom: 10px;"></div> {# Ajoutez une marge en bas de chaque carte de post #}
             {% endfor %}
         </div>
     </div>

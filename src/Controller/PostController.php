@@ -61,5 +61,33 @@ class PostController extends AbstractController
         ]);
     }
 
+    #[Route('/post/{id}/delete', name: 'app_delete_post')]
+    public function delete(Post $post): Response
+    {
+        $this->entityManager->remove($post);
+        $this->entityManager->flush();
+
+        return $this->redirectToRoute('app_posts');
+    }
+
+    #[Route('/post/{id}/edit', name: 'app_edit_post')]
+    public function edit(Request $request, Post $post): Response
+    {
+        $form = $this->createForm(PostFormType::class, $post);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->entityManager->flush();
+
+            return $this->redirectToRoute('app_posts');
+        }
+
+        return $this->render('post/edit.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+
 }
 
