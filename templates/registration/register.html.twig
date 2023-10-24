@@ -12,19 +12,13 @@
             {{ form_start(registrationForm) }}
             {{ form_row(registrationForm.username, {'label_attr': {'class': 'form-control'}}) }}
             {{ form_row(registrationForm.email, {'label_attr': {'class': 'form-control'}}) }}
-            {{ form_row(registrationForm.plainPassword, {
-                'label': 'Mot de passe',
-                'label_attr': {'class': 'registration-label'}
-            }) }}
-            {{ form_row(registrationForm.confirmPassword, {
-                'label': 'Confirmer mot de passe',
-                'label_attr': {'class': 'registration-label'}
-            }) }}
+            {{ form_row(registrationForm.password.first) }}
+            {{ form_row(registrationForm.password.second) }}
             {{ form_row(registrationForm.agreeTerms) }}
             <button type="submit" class="registration-button">S'enregistrer</button>
+            <p>Vous avez déjà un compte ? <a href="{{ path('app_login') }}">Connectez-vous</a></p>
             {{ form_end(registrationForm) }}
         </div>
     </div>
-    <p>Vous avez déjà un compte ? <a href="{{ path('app_login') }}">Connectez-vous</a></p>
 
 {% endblock %}
