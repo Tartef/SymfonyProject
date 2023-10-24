@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-{% endblock %}
+
 
 {% block title %}Log in!{% endblock %}
 
@@ -13,7 +11,7 @@
 
         {% if app.user %}
             <div class="mb-3">
-                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                Connecté en tant que {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}" class="logoutOnLoginPage">Se déconnecter</a>
             </div>
         {% endif %}
 
@@ -27,9 +25,15 @@
                value="{{ csrf_token('authenticate') }}"
         >
 
+
+        <label for="remember_me"><input type="checkbox" id="remember_me" name="_remember_me">Se souvenir de moi</label>
+
+
         <button class="btn btn-lg btn-primary" type="submit">
-            Sign in
+            Se connecter
         </button>
+
     </form>
+    <p>Vous n'avez pas encore de compte ? <a href="{{ path('app_register') }}">Inscrivez-vous</a></p>
 {% endblock %}
 
